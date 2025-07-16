@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>CPU Scheduling Simulator</h1>
+            <p class="subtitle">Visualize and compare different CPU scheduling algorithms</p>
+        </header>
+
+        <main class="app-content">
+            <section class="input-section card">
+                <h2>Add Process</h2>
+                <div class="form-group">
+                    <label for="processId">Process ID</label>
+                    <input type="text" id="processId" placeholder="P1">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="arrivalTime">Arrival Time</label>
+                        <input type="number" id="arrivalTime" placeholder="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="burstTime">Burst Time</label>
+                        <input type="number" id="burstTime" placeholder="5" min="1">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="addProcessBtn" class="btn btn-primary fancy-btn">
+                        <span class="icon">➕</span> Add Process
+                    </button>
+                    <button id="clearBtn" class="btn btn-danger fancy-btn">
+                        <span class="icon">🧹</span> Clear All
+                    </button>
+                </div>
+            </section>
+
+            <section class="process-table-section card">
+                <div class="section-header">
+                    <h2>Process Table</h2>
+                    <span class="badge" id="processCount">0 processes</span>
+                </div>
+                <div class="table-container">
+                    <table id="processTable">
+                        <thead>
+                            <tr>
+                                <th>Process ID</th>
+                                <th>Arrival</th>
+                                <th>Burst</th>
+                                <th>Completed</th>
+                                <th>Waiting</th>
+                                <th>Turnaround</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="algorithm-section card">
+                <h2>Scheduling Algorithm</h2>
+                <div class="algorithm-options">
+                    <div class="algorithm-option" data-method="fcfs">
+                        <div class="algorithm-icon">F</div>
+                        <div class="algorithm-info">
+                            <h3>FCFS</h3>
+                            <p>First Come First Served</p>
+                        </div>
+                    </div>
+                    <div class="algorithm-option" data-method="sjf">
+                        <div class="algorithm-icon">S</div>
+                        <div class="algorithm-info">
+                            <h3>SJF</h3>
+                            <p>Shortest Job First</p>
+                        </div>
+                    </div>
+                    <div class="algorithm-option" data-method="srtf">
+                        <div class="algorithm-icon">SR</div>
+                        <div class="algorithm-info">
+                            <h3>SRTF</h3>
+                            <p>Shortest Remaining Time</p>
+                        </div>
+                    </div>
+                    <div class="algorithm-option" data-method="rr">
+                        <div class="algorithm-icon">R</div>
+                        <div class="algorithm-info">
+                            <h3>Round Robin</h3>
+                            <p>Time-sliced scheduling</p>
+                        </div>
+                    </div>
+                    <div class="algorithm-option" data-method="priority">
+                        <div class="algorithm-icon">P</div>
+                        <div class="algorithm-info">
+                            <h3>Priority</h3>
+                            <p>Priority-based</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quantumContainer" class="quantum-container">
+                    <label for="quantum">Time Quantum</label>
+                    <input type="number" id="quantum" value="2" min="1">
+                </div>
+
+                <button id="calculateBtn" class="btn-primary btn-large">
+                    <span class="icon">↻</span> Calculate Schedule
+                </button>
+            </section>
+
+            <section class="results-section">
+                <div class="result-card">
+                    <div class="result-value" id="avgTurnaround">0.00</div>
+                    <div class="result-label">Avg Turnaround</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="avgWaiting">0.00</div>
+                    <div class="result-label">Avg Waiting</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="throughput">0.00</div>
+                    <div class="result-label">Throughput</div>
+                </div>
+            </section>
+
+            <section id="ganttChart" class="gantt-section card">
+                <h2>Gantt Chart</h2>
+                <div class="gantt-container" id="ganttContainer"></div>
+                <div class="gantt-timeline" id="ganttTimeline"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
