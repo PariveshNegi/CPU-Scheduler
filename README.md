@@ -40,4 +40,4 @@ The **CPU Scheduling Simulator** is an interactive, browser-based visualization 
 
 ## Acknowledgments
 
-This project was developed by **Parivesh Singh Negi (vishu)** as an educational tool for understanding CPU scheduling in Operating Systems. It's a part of the **PCS-693 Web Technology Lab** course (B.Tech CSE).
+This project was developed by **Parivesh Singh Negi (vishu)** as an educational tool for understanding CPU scheduling in Operating Systems.
